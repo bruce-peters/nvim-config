@@ -44,6 +44,10 @@ return {
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
+				opts.desc = "Format buffer"
+				keymap.set("n", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
+				keymap.set("v", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
+
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
@@ -77,6 +81,17 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+		-- Show diagnostics as virtual text to the side of the line
+		vim.diagnostic.config({
+			virtual_text = {
+				prefix = "●",
+				spacing = 2,
+			},
+			signs = true,
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
+		})
 
 		mason_lspconfign.setup({
 			mason_lspconfig = {
@@ -155,6 +170,9 @@ return {
 						filetypes = { "python" },
 						pythonPath = vim.fn.exepath("python3") or vim.fn.exepath("python"),
 					})
+				end,
+				["jdtls"] = function()
+					-- nothing it attaches on its own
 				end,
 			},
 		})

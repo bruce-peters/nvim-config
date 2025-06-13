@@ -7,6 +7,7 @@ return {
 		--- Setup ToggleTerm with custom options.
 		require("toggleterm").setup({
 			size = 20, -- Default terminal size
+			shell = "pwsh.exe", -- Use the default shell
 			open_mapping = [[<c-\>]], -- Key mapping to toggle terminal
 			hide_numbers = true, -- Hide the number column in toggleterm buffers
 			shade_filetypes = {}, -- Filetypes to shade
@@ -73,8 +74,8 @@ return {
 					cmd = "javac " .. filename .. " && java " .. vim.fn.fnamemodify(filename, ":r")
 				elseif filetype == "c" then
 					cmd = "gcc " .. filename .. " -o out && ./out"
-				else
-					cmd = "echo 'No runner configured for this filetype'"
+				elseif filetype == "cpp" then
+					cmd = "g++ " .. filename .. " -o out && ./out"
 				end
 
 				if cmd ~= "" then
@@ -82,6 +83,33 @@ return {
 				end
 			end,
 			desc = "Run File in ToggleTerm",
+		},
+		{
+			"<leader>wpb",
+			function()
+				local wpilib_root = "C:/Users/Public/wpilib/2025"
+				local cmd = "gradlew build -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
+			end,
+			desc = "Build WPILib project",
+		},
+		{
+			"<leader>wpd",
+			function()
+				local wpilib_root = "C:/Users/Public/wpilib/2025"
+				local cmd = "gradlew deploy -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
+			end,
+			desc = "Deploy WPILib project",
+		},
+		{
+			"<leader>wps",
+			function()
+				local wpilib_root = "C:/Users/Public/wpilib/2025"
+				local cmd = "gradlew simulateJava -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
+			end,
+			desc = "Simulate WPILib project",
 		},
 	},
 }

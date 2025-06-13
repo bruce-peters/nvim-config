@@ -27,7 +27,6 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"tsserver",
 				"html",
 				"cssls",
 				"tailwindcss",
@@ -37,6 +36,7 @@ return {
 				"emmet_ls",
 				"prismals",
 				"pyright",
+				"jdtls",
 			},
 		})
 		mason_tool_installer.setup({
@@ -47,6 +47,10 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
+				"php-cs-fixer", -- php formatter
+				"phpstan", -- php linter
+				"java-debug-adapter", -- java debugger
+				"java-test", -- java test runner
 			},
 		})
 	end,
