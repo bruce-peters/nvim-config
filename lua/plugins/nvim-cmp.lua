@@ -38,14 +38,24 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<Tab>"] = cmp.mapping(function(fallback)
+				["<Tab>"] = function(fallback)
+					-- If cmp menu is visible, confirm first item
 					if cmp.visible() then
-						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-						cmp.confirm({ select = true }) -- auto select first item if nothing selected
+						cmp.confirm({ select = true })
+					-- If inside a snippet, jump to next placeholder
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
 					else
 						fallback()
 					end
-				end, { "i", "s" }),
+				end,
+				["<S-Tab>"] = function(fallback)
+					if luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end,
 				["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
 				["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),

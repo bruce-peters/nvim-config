@@ -75,7 +75,7 @@ return {
 				elseif filetype == "c" then
 					cmd = "gcc " .. filename .. " -o out && ./out"
 				elseif filetype == "cpp" then
-					cmd = "g++ " .. filename .. " -o out && ./out"
+					cmd = "g++ " .. filename .. " -o out && ./out && del ./out.exe"
 				end
 
 				if cmd ~= "" then

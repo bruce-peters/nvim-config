@@ -37,6 +37,8 @@ return {
 				"prismals",
 				"pyright",
 				"jdtls",
+				"clangd",
+				"intelephense",
 			},
 		})
 		mason_tool_installer.setup({
@@ -51,6 +53,7 @@ return {
 				"phpstan", -- php linter
 				"java-debug-adapter", -- java debugger
 				"java-test", -- java test runner
+				"clang-format", -- C/C++ formatter
 			},
 		})
 	end,
