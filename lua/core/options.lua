@@ -50,7 +50,3 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
-
--- turn off backup files
-vim.opt.spell = true
-vim.opt.spelllang = "en_us"
