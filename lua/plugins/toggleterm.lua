@@ -88,7 +88,7 @@ return {
 			"<leader>wpb",
 			function()
 				local wpilib_root = "C:/Users/Public/wpilib/2025"
-				local cmd = "gradlew build -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				local cmd = "./gradlew build -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
 				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
 			end,
 			desc = "Build WPILib project",
@@ -97,7 +97,7 @@ return {
 			"<leader>wpd",
 			function()
 				local wpilib_root = "C:/Users/Public/wpilib/2025"
-				local cmd = "gradlew deploy -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				local cmd = "./gradlew deploy -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
 				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
 			end,
 			desc = "Deploy WPILib project",
@@ -106,7 +106,27 @@ return {
 			"<leader>wps",
 			function()
 				local wpilib_root = "C:/Users/Public/wpilib/2025"
-				local cmd = "gradlew simulateJava -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				local cmd = "./gradlew simulateJava -D org.gradle.java.home=" .. wpilib_root .. "/jdk"
+				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
+			end,
+			desc = "Simulate WPILib project",
+		},
+		{
+			"<leader>wpf",
+			function()
+				local wpilib_root = "C:/Users/Public/wpilib/2025"
+				local cmd = "./gradlew spotlessApply"
+				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
+			end,
+			desc = "Format WPILib project",
+		},
+		{
+			"<leader>wpr",
+			function()
+				local wpilib_root = "C:/Users/Public/wpilib/2025"
+				local cmd = "./gradlew --no-daemon --no-watch-fs replayWatch -D org.gradle.java.home="
+					.. wpilib_root
+					.. "/jdk"
 				require("toggleterm").exec(cmd, 1, 12, vim.loop.cwd())
 			end,
 			desc = "Simulate WPILib project",
