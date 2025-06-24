@@ -50,3 +50,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- auto read files when changed outside of vim
+opt.autoread = true -- automatically read file when changed outside of vim

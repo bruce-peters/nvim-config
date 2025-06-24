@@ -142,6 +142,18 @@ return {
 						},
 					})
 				end,
+				["ts_ls"] = function()
+					lspconfig["ts_ls"].setup({
+						capabilities = capabilities,
+						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+					})
+				end,
+				["tailwindcss"] = function()
+					lspconfig["tailwindcss"].setup({
+						capabilities = capabilities,
+						filetypes = { "javascriptreact", "typescriptreact", "html", "css", "scss", "sass" },
+					})
+				end,
 				["lua_ls"] = function()
 					-- configure lua server (with special settings)
 					lspconfig["lua_ls"].setup({
