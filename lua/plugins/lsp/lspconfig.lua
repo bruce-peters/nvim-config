@@ -186,6 +186,13 @@ return {
 						pythonPath = vim.fn.exepath("python3") or vim.fn.exepath("python"),
 					})
 				end,
+				["intelephense"] = function()
+					-- configure PHP intelephense language server
+					lspconfig["intelephense"].setup({
+						capabilities = capabilities,
+						filetypes = { "php" },
+					})
+				end,
 				["jdtls"] = function()
 					-- nothing it attaches on its own
 				end,

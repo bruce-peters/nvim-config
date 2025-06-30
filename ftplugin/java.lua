@@ -103,6 +103,10 @@ local config = {
 				--   url = "https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml",
 				--   profile = "GoogleStyle",
 				-- },
+				settings = {
+					url = "file:///" .. home:gsub("\\", "/") .. "/AppData/Local/nvim/java-formatter.xml",
+					profile = "Custom4Spaces",
+				},
 			},
 			completion = {
 				favoriteStaticMembers = {
@@ -146,6 +150,11 @@ local config = {
 		extendedClientCapabilities = jdtls.extendedClientCapabilities,
 	},
 }
+-- Set buffer options for Java style: 4 spaces, expandtab, etc.
+vim.bo.tabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.softtabstop = 4
+vim.bo.expandtab = true
 
 -- Needed for debugging
 config["on_attach"] = function(client, bufnr)
