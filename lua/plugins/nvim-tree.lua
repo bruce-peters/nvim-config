@@ -39,10 +39,10 @@ return {
 				},
 			},
 			filters = {
-				custom = { ".DS_Store" },
+				custom = { ".DS_Store" }, -- hide these files and folders
 			},
 			git = {
-				ignore = false,
+				ignore = false, -- show git ignored files
 			},
 		})
 

@@ -68,7 +68,7 @@ local config = {
 	settings = {
 		java = {
 			-- TODO: Replace this with the absolute path to your main java version (JDTLS requires JDK 21 or higher)
-			home = "C:/Program Files/Java/jdk-17",
+			home = "C:/Program Files/Java/jdk-21",
 			eclipse = {
 				downloadSources = true,
 			},
@@ -80,6 +80,10 @@ local config = {
 					{
 						name = "JavaSE-17",
 						path = "C:/Program Files/Java/jdk-17",
+					},
+					{
+						name = "JavaSE-21",
+						path = "C:/Program Files/Java/jdk-21",
 					},
 				},
 			},
@@ -100,8 +104,8 @@ local config = {
 				enabled = true,
 				-- Formatting works by default, but you can refer to a specific file/URL if you choose
 				-- settings = {
-				--   url = "https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml",
-				--   profile = "GoogleStyle",
+				-- 	url = "https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml",
+				-- 	profile = "GoogleStyle",
 				-- },
 				settings = {
 					url = "file:///" .. home:gsub("\\", "/") .. "/AppData/Local/nvim/java-formatter.xml",

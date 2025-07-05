@@ -1,0 +1,60 @@
+Documentation:
+A. Initial File Comment [a2]: Your programs should be well-documented. Each program should begin with an initial file comment. This comment should start by indicating your name, class, date, instructor, name of file, etc. Next it should describe in detail what the program does and how the code works. Any input expected from the user and any output produced by the program should be described in detail. You should expect your initial file comment for the first few assignments to be at least 50 words, and by assignment 7 you should be seeing over 90 words.
+
+Important local variables should be commented at their declaration. Aside from this, in most cases it should not be necessary to place comments in the body of a method. This usually clutters up your code and ends up making the method more difficult to read. If you find yourself needing to explain something in the middle of a method, perhaps you should look for a clearer way to write it!
+
+B. General Advice [a2]: Your comments should be directed toward a reader who is an expert Java programmer. You should not explain features of the language!
+
+C. Method Comments [a5]: Just above each of your method definitions you must provide a comment describing what the method does. A simple method might have a 15 word comment, while a more complex method should have a comment of at least 50 words. Make sure to explain the role of each parameter in your method comments, and refer to them by name.
+
+Appearance:
+A. General [a1]: Use lots of whitespace (blank lines and spaces) to separate the different parts of your program!! When I look at your program my first impression should not be a page crammed with code. Get rid of wraparound. Put a blank line between your declarations and your statements. Put a space before and after each operator. Make sure your lines aren't too long, no more than 80 or 90 characters.
+
+B. With Methods [a5]: Put 6 blank lines between method definitions.
+
+Identifier Names:
+A. General [a1]: Choose your identifier names very carefully. Variable names should precisely represent what the variable is storing. Do not use abbreviations unless you feel the identifier name would otherwise be so long that it would hinder the readability of your program. Don’t use one letter variable names except, perhaps, as a counter in a for loop.
+
+B. With Methods [a5]: Choose your method names so that as much as possible your program reads like English and the names describe precisely what the method does. Void method names should start with an action word (readString, getData, etc.).
+
+Decomposition [a5]:
+Any time there is a sequence of statements in your program that performs a specific, nameable sub-task, you should consider making that sequence of statements into a method. A nice length for methods is about 10 lines, although they can be longer if they are simple (for example, lots of output statements) or if there is just no logical way to break it up. Consider making complex methods (for example, nested loops) even shorter. A goal: when you are done with your program, I ought to be able to look at any particular method and have a general understanding of what is does and how just at a glance.
+
+In this class you should rarely write a method longer than 10 lines.
+
+Indentation [a1]:
+Indents must be exactly 4 spaces.
+
+You may follow the indentation scheme used in the textbook or you may use the scheme used in the lessons. No others. For example, every statement must appear on a line by itself, every close curly brace must appear as the first (or only) item on a line, and every open curly brace must appear as the last (or only) item on a line.
+
+Simple Code/No Repeated Code [a1]:
+Make sure that your code is as simple as possible and that there is no unnecessary repeated code.
+
+Miscellaneous:
+[a2] In most cases no numbers other than 1 or 0 should appear in your program. Other numbers should usually be declared as class constants using the "final" keyword. Names of constants should be all uppercase.
+
+[a2]Do not use any class variables in your main class. These are variables that are declared in the main class but outside of any method definition. The exception to this rule is the Scanner variable. Violating this guideline may cost you a lot of points. (Note that this does not apply to final variables.)
+
+[a4] Do not use break (except in a switch statement), return (except in a value-returning method), exit, or continue.
+
+[a3] Don't mix up statements and expressions. For example, count++ should be used as a statement, not as an expression.
+
+[a1] The characters "== true" or "== false" should never occur in your code.
+
+[a3] You should never have
+
+if (x) {
+    return true;
+} else {
+    return false;
+}
+or
+
+if (x) {
+    return true;
+} 
+return false;
+in your code (where x is any expression). These can be replaced with simply
+
+return x;
+[a1] Do not use a floating point variable to store a quantity that will always be an integer.

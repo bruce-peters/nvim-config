@@ -5,7 +5,7 @@
         <setting id="org.eclipse.jdt.core.formatter.tabulation.size" value="4"/>
         <setting id="org.eclipse.jdt.core.formatter.indentation.size" value="4"/>
         <setting id="org.eclipse.jdt.core.formatter.lineSplit" value="90"/>
-        <setting id="org.eclipse.jdt.core.formatter.blank_lines_between_method_declarations" value="6"/>
+        <setting id="org.eclipse.jdt.core.formatter.blank_lines_before_method" value="6"/>
         <setting id="org.eclipse.jdt.core.formatter.insert_space_before_and_after_binary_operators" value="insert"/>
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_invocation_arguments" value="insert"/>
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_parameters" value="insert"/>
