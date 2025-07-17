@@ -53,3 +53,8 @@ opt.swapfile = false
 
 -- auto read files when changed outside of vim
 opt.autoread = true -- automatically read file when changed outside of vim
+
+-- track memory usage
+vim.api.nvim_create_user_command("Mem", function()
+	print("Lua memory (KB):", collectgarbage("count"))
+end, {})

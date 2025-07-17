@@ -17,9 +17,10 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
+		local user_lsp_augroup = vim.api.nvim_create_augroup("UserLspConfig", {})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			group = user_lsp_augroup,
 			callback = function(ev)
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -99,21 +100,6 @@ return {
 				function(server_name)
 					lspconfig[server_name].setup({
 						capabilities = capabilities,
-					})
-				end,
-				["svelte"] = function()
-					-- configure svelte server
-					lspconfig["svelte"].setup({
-						capabilities = capabilities,
-						on_attach = function(client, bufnr)
-							vim.api.nvim_create_autocmd("BufWritePost", {
-								pattern = { "*.js", "*.ts" },
-								callback = function(ctx)
-									-- Here use ctx.match instead of ctx.file
-									client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-								end,
-							})
-						end,
 					})
 				end,
 				["graphql"] = function()
