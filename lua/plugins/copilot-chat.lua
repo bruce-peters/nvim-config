@@ -1,78 +1,79 @@
-return {
-	"CopilotC-Nvim/CopilotChat.nvim",
-	dependencies = {
-		"github/copilot.vim", -- classic ghost-text & completions
-		"nvim-lua/plenary.nvim", -- utility functions
-	},
-	build = "make tiktoken",
-	opts = {
-		auto_insert_mode = true, -- immediately prompt
-		diff = true, -- show edits as a diff you can apply
-		question_header = "  User ",
-		answer_header = "  Copilot ",
-		window = { width = 0.4 },
-	},
-	keys = {
-		-- open full chat history
-		{ "<leader>cco", "<cmd>CopilotChat<cr>", desc = "CopilotChat: Open Chat" },
-
-		-- explain the current visual selection
-		{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", mode = "v", desc = "CopilotChat: Explain Code" },
-
-		-- review the current visual selection
-		{ "<leader>ccr", "<cmd>CopilotChatReview<cr>", mode = "v", desc = "CopilotChat: Review Code" },
-
-		-- refactor the current visual selection
-		{ "<leader>ccR", "<cmd>CopilotChatRefactor<cr>", mode = "v", desc = "CopilotChat: Refactor Code" },
-
-		-- automatically fix lint/type errors in selection
-		{ "<leader>ccf", "<cmd>CopilotChatFix<cr>", mode = "v", desc = "CopilotChat: Fix Code Issues" },
-
-		-- optimize performance or readability
-		{ "<leader>cci", "<cmd>CopilotChatOptimize<cr>", mode = "v", desc = "CopilotChat: Optimize Code" },
-
-		-- generate documentation comments
-		{ "<leader>ccd", "<cmd>CopilotChatDocs<cr>", mode = "v", desc = "CopilotChat: Generate Docs" },
-
-		-- generate unit tests for the selection
-		{ "<leader>cct", "<cmd>CopilotChatTests<cr>", mode = "v", desc = "CopilotChat: Generate Tests" },
-
-		-- generate dave style
-		{
-			"<leader>ccDave",
-			function()
-				local dave_path = vim.fn.expand("~/AppData/Local/nvim/dave.txt")
-				if vim.fn.filereadable(dave_path) == 0 then
-					vim.notify("Could not read: " .. dave_path, vim.log.levels.ERROR)
-					return
-				end
-
-				local file = io.open(dave_path, "r")
-				local dave_style = file:read("*a")
-				file:close()
-
-				-- Build a custom prompt that includes the file content
-				local prompt = table.concat({
-					"-- Use these style guidelines from dave.txt --",
-					"make sure the descriptions aren't too long, and make them seem like something an initeligent computer science student would write",
-					"",
-					"#buffer",
-					dave_style,
-					"",
-					"This should be your header:",
-					"* Name: Bruce Peters",
-					"* Class: Programming Methods: Java",
-					"* Date: " .. os.date("%m/%d/%Y"),
-					"* Instructor: Dave Harden",
-					"* File: " .. vim.fn.expand("%:t"),
-					"-- Now reformat the entire buffer according to these guidelines --",
-				}, "\n")
-
-				-- Safely run the CopilotChat command with proper escaping
-				local cmd = "CopilotChat " .. vim.fn.shellescape(prompt)
-				vim.api.nvim_command(cmd)
-			end,
-			desc = "CopilotChat: Format buffer to Dave Style",
-		},
-	},
-}
+return {}
+-- return {
+-- 	"CopilotC-Nvim/CopilotChat.nvim",
+-- 	dependencies = {
+-- 		"github/copilot.vim", -- classic ghost-text & completions
+-- 		"nvim-lua/plenary.nvim", -- utility functions
+-- 	},
+-- 	build = "make tiktoken",
+-- 	opts = {
+-- 		auto_insert_mode = true, -- immediately prompt
+-- 		diff = true, -- show edits as a diff you can apply
+-- 		question_header = "  User ",
+-- 		answer_header = "  Copilot ",
+-- 		window = { width = 0.4 },
+-- 	},
+-- 	keys = {
+-- 		-- open full chat history
+-- 		{ "<leader>cco", "<cmd>CopilotChat<cr>", desc = "CopilotChat: Open Chat" },
+--
+-- 		-- explain the current visual selection
+-- 		{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", mode = "v", desc = "CopilotChat: Explain Code" },
+--
+-- 		-- review the current visual selection
+-- 		{ "<leader>ccr", "<cmd>CopilotChatReview<cr>", mode = "v", desc = "CopilotChat: Review Code" },
+--
+-- 		-- refactor the current visual selection
+-- 		{ "<leader>ccR", "<cmd>CopilotChatRefactor<cr>", mode = "v", desc = "CopilotChat: Refactor Code" },
+--
+-- 		-- automatically fix lint/type errors in selection
+-- 		{ "<leader>ccf", "<cmd>CopilotChatFix<cr>", mode = "v", desc = "CopilotChat: Fix Code Issues" },
+--
+-- 		-- optimize performance or readability
+-- 		{ "<leader>cci", "<cmd>CopilotChatOptimize<cr>", mode = "v", desc = "CopilotChat: Optimize Code" },
+--
+-- 		-- generate documentation comments
+-- 		{ "<leader>ccd", "<cmd>CopilotChatDocs<cr>", mode = "v", desc = "CopilotChat: Generate Docs" },
+--
+-- 		-- generate unit tests for the selection
+-- 		{ "<leader>cct", "<cmd>CopilotChatTests<cr>", mode = "v", desc = "CopilotChat: Generate Tests" },
+--
+-- 		-- generate dave style
+-- 		{
+-- 			"<leader>ccDave",
+-- 			function()
+-- 				local dave_path = vim.fn.expand("~/AppData/Local/nvim/dave.txt")
+-- 				if vim.fn.filereadable(dave_path) == 0 then
+-- 					vim.notify("Could not read: " .. dave_path, vim.log.levels.ERROR)
+-- 					return
+-- 				end
+--
+-- 				local file = io.open(dave_path, "r")
+-- 				local dave_style = file:read("*a")
+-- 				file:close()
+--
+-- 				-- Build a custom prompt that includes the file content
+-- 				local prompt = table.concat({
+-- 					"-- Use these style guidelines from dave.txt --",
+-- 					"make sure the descriptions aren't too long, and make them seem like something an initeligent computer science student would write",
+-- 					"",
+-- 					"#buffer",
+-- 					dave_style,
+-- 					"",
+-- 					"This should be your header:",
+-- 					"* Name: Bruce Peters",
+-- 					"* Class: Programming Methods: Java",
+-- 					"* Date: " .. os.date("%m/%d/%Y"),
+-- 					"* Instructor: Dave Harden",
+-- 					"* File: " .. vim.fn.expand("%:t"),
+-- 					"-- Now reformat the entire buffer according to these guidelines --",
+-- 				}, "\n")
+--
+-- 				-- Safely run the CopilotChat command with proper escaping
+-- 				local cmd = "CopilotChat " .. vim.fn.shellescape(prompt)
+-- 				vim.api.nvim_command(cmd)
+-- 			end,
+-- 			desc = "CopilotChat: Format buffer to Dave Style",
+-- 		},
+-- 	},
+-- }
