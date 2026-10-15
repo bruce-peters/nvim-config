@@ -1,10 +1,13 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	-- the default branch is now `main`, a rewrite without `nvim-treesitter.configs`;
+	-- this config uses the `master` API, so stay on that branch when updating
+	branch = "master",
 	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	dependencies = {
 		"windwp/nvim-ts-autotag",
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
 	},
 	config = function()
 		-- import nvim-treesitter plugin

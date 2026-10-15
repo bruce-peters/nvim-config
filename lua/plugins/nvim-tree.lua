@@ -60,3 +60,7 @@
 -- 		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 -- 	end,
 -- }
+
+-- nvim-tree is replaced by the Snacks explorer (<leader>ee in snacks.lua).
+-- lazy.nvim needs every file in lua/plugins/ to return a spec table, so return an empty one.
+return {}
