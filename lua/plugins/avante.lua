@@ -3,14 +3,9 @@ return {
 	"yetone/avante.nvim",
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	-- ⚠️ must add this setting! ! !
-	build = function()
-		-- conditionally use the correct build system for the current OS
-		if vim.fn.has("win32") == 1 then
-			return "make"
-		else
-			return "make"
-		end
-	end,
+	-- lazy.nvim runs a string build as a shell command, but only *calls* a build
+	-- function and ignores what it returns, so the old function never ran `make`
+	build = "make",
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	---@module 'avante'

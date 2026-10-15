@@ -5,7 +5,10 @@ return {
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && copy build\\Release\\libfzf.dll build\\libfzf.dll",
+			-- `copy` only exists on Windows; elsewhere the plugin's Makefile builds libfzf.so
+			build = vim.fn.has("win32") == 1
+					and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && copy build\\Release\\libfzf.dll build\\libfzf.dll"
+				or "make",
 		},
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
